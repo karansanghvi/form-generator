@@ -1,13 +1,14 @@
 import React from 'react';
 
-const Form = ({ type }) => {
+const Form = ({ type, onNameChange }) => {
   return (
     <div className="form">
       <form>
-      <label>Enter your name:
-        <input type="text" />
-      </label>
-    </form>
+        <label>
+          Enter your name:
+          <input type="text" onChange={onNameChange} />
+        </label>
+      </form>
     </div>
   );
 };

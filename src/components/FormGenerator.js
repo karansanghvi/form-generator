@@ -7,31 +7,28 @@ const FormGenerator = () => {
   const [infantCount, setInfantCount] = useState(0);
   const navigate = useNavigate();
 
-  const handleGenerateForms = () => {
+  const generateForms = () => {
     const forms = [];
-  
+
     for (let i = 0; i < adultCount; i++) {
       forms.push({ key: `adult-${i}`, type: 'Adult', passenger: `Passenger ${i + 1}` });
     }
-  
+
     for (let i = 0; i < childCount; i++) {
       forms.push({ key: `child-${i}`, type: 'Child', passenger: `Passenger ${i + adultCount + 1}` });
     }
-  
+
     for (let i = 0; i < infantCount; i++) {
       forms.push({ key: `infant-${i}`, type: 'Infant', passenger: `Passenger ${i + adultCount + childCount + 1}` });
     }
-  
+
     return forms;
   };
 
   const handleGenerateFormsClick = () => {
-    // call the handleGenerateForms to generate an array of form data
-    const generatedForms = handleGenerateForms();
-    // convert the generated array into URL
+    const generatedForms = generateForms();
     const formsQueryParam = encodeURIComponent(JSON.stringify(generatedForms));
-    // UL includes query parameters to pass the generated form data and the current index
-    navigate(`/generated-forms?forms=${formsQueryParam}&currentFormIndex=0`);
+    navigate(`/generated-forms?forms=${formsQueryParam}`);
   };
 
   return (
